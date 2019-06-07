@@ -15,4 +15,17 @@ class Actor
         @@all
     end
 
+    def star_in_movie(movie, starring_role)
+        Role.new(self, movie, starring_role)
+    end
+
+    def roles
+        Role.all.select { |role| role.actor == self }
+    end
+
+    def movies
+        self.roles.map { |role| role.movie }
+    end
+
+
 end
